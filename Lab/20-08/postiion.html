@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Positioning Demo</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 15px;
+      min-height: 100vh;
+      background: #f8f9fa;
+    }
+
+    /* Header section */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+
+    /* Title */
+    .title {
+      font-size: clamp(24px, 5vw, 32px);
+      margin: 0;
+      color: #1e1e1e;
+      text-align: center;
+      flex: 1;
+    }
+
+    /* Box Model button */
+    .box-model-btn {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: 2px solid #28a745;
+      background: #28a745;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 25px;
+      font-weight: 600;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .box-model-btn:hover {
+      background: #218838;
+      border-color: #218838;
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+    }
+
+    /* Buttons row */
+    .position-types {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 30px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .pos-btn {
+      padding: 10px 20px;
+      font-size: clamp(14px, 3vw, 16px);
+      border: 2px solid #1e1e1e;
+      background: white;
+      color: #1e1e1e;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border-radius: 25px;
+      font-weight: 500;
+      min-width: 80px;
+    }
+
+    .pos-btn:hover {
+      background: #1e1e1e;
+      color: white;
+    }
+
+    .pos-btn.active {
+      background: #1e1e1e;
+      color: white;
+    }
+
+    /* Example boxes */
+    .example-box {
+      border: 3px solid #007bff;
+      width: clamp(100px, 15vw, 120px);
+      height: clamp(60px, 10vw, 80px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: clamp(14px, 3vw, 18px);
+      font-weight: bold;
+      background: white;
+      color: #007bff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+
+    #box1 {
+      background: #e3f2fd;
+    }
+
+    #box2 {
+      background: #fff3e0;
+      border-color: #ff9800;
+      color: #ff9800;
+    }
+
+    /* Info panel */
+    .info-panel {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: none;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+      max-width: min(320px, calc(100vw - 40px));
+      z-index: 1000;
+      color: white;
+    }
+
+    .info-panel h5 {
+      margin-bottom: 15px;
+      color: white;
+      font-size: clamp(16px, 4vw, 18px);
+      font-weight: 600;
+      text-align: center;
+      border-bottom: 1px solid rgba(255,255,255,0.3);
+      padding-bottom: 10px;
+    }
+
+    .info-panel p {
+      margin: 8px 0;
+      font-size: clamp(12px, 3vw, 14px);
+      line-height: 1.5;
+    }
+
+    #currentPos {
+      background: rgba(255,255,255,0.2);
+      padding: 10px 16px;
+      border-radius: 15px;
+      text-align: center;
+      font-weight: 600;
+      font-size: clamp(14px, 3.5vw, 16px);
+      text-transform: capitalize;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .position-summary {
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: #fff;
+      font-size: clamp(13px, 3.2vw, 15px);
+    }
+
+    #positionInfo {
+      font-style: normal;
+      background: rgba(255,255,255,0.1);
+      padding: 15px;
+      border-radius: 12px;
+      border-left: 4px solid rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+
+    .practical-tip {
+      background: rgba(255,255,255,0.15);
+      padding: 10px;
+      border-radius: 8px;
+      margin-top: 10px;
+      font-size: clamp(11px, 2.8vw, 13px);
+      border-left: 3px solid #ffd700;
+    }
+
+    .practical-tip::before {
+      content: "💡 ";
+      margin-right: 5px;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      body {
+        padding: 10px;
+      }
+      
+      .header {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .position-types {
+        gap: 8px;
+      }
+      
+      .pos-btn {
+        padding: 8px 16px;
+        min-width: 70px;
+      }
+      
+      .info-panel {
+        position: relative;
+        max-width: 100%;
+        margin-bottom: 20px;
+        order: -1;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .position-types {
+        flex-direction: column;
+        align-items: center;
+      }
+      
+      .pos-btn {
+        width: 150px;
+      }
+      
+      .box-model-btn {
+        width: 150px;
+        text-align: center;
+      }
+    }
+
+    /* Scroll content for sticky demo */
+    .scroll-content {
+      height: 200vh;
+      background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+      margin-top: 50px;
+      padding: 20px;
+      display: none;
+    }
+
+    .scroll-content.show {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <a href="box-model.html" class="box-model-btn">📦 Box Model</a>
+    <h1 class="title">CSS Positioning Demo</h1>
+    <div></div> <!-- Spacer for flex layout -->
+  </div>
+
+  <!-- Position type buttons -->
+  <div class="position-types">
+    <button class="pos-btn" data-pos="static">Static</button>
+    <button class="pos-btn" data-pos="relative">Relative</button>
+    <button class="pos-btn" data-pos="fixed">Fixed</button>
+    <button class="pos-btn" data-pos="absolute">Absolute</button>
+    <button class="pos-btn" data-pos="sticky">Sticky</button>
+  </div>
+
+  <!-- Info panel -->
+  <div class="info-panel" id="infoPanel">
+    <h5>Position Explained</h5>
+    <p id="currentPos">📍 static</p>
+    <p class="position-summary" id="positionSummary">Default positioning</p>
+    <p id="positionInfo">Elements flow naturally in the document. Top, left, right, bottom properties have no effect. This is how HTML elements behave by default - they stack one after another.</p>
+    <div class="practical-tip" id="practicalTip">Most common position type - no setup needed!</div>
+  </div>
+
+  <!-- Example boxes -->
+  <div class="example-box" id="box1">Box 1</div>
+  <div class="example-box" id="box2">Box 2</div>
+
+  <!-- Scroll content for sticky demo -->
+  <div class="scroll-content" id="scrollContent">
+    <h3>Scroll down to see sticky positioning in action!</h3>
+    <p>This is extra content to demonstrate how sticky positioning works. Keep scrolling...</p>
+    <div style="height: 100px; background: #ffeb3b; margin: 20px 0; padding: 20px;">
+      <p>More content here...</p>
+    </div>
+    <div style="height: 100px; background: #4caf50; margin: 20px 0; padding: 20px; color: white;">
+      <p>Even more content...</p>
+    </div>
+    <div style="height: 100px; background: #f44336; margin: 20px 0; padding: 20px; color: white;">
+      <p>And more content to scroll through...</p>
+    </div>
+  </div>
+
+  <script>
+    // Get elements for info panel
+    const buttons = document.querySelectorAll(".pos-btn");
+    const box1 = document.getElementById("box1");
+    const box2 = document.getElementById("box2");
+    const currentPosEl = document.getElementById("currentPos");
+    const positionSummaryEl = document.getElementById("positionSummary");
+    const positionInfoEl = document.getElementById("positionInfo");
+    const practicalTipEl = document.getElementById("practicalTip");
+    const scrollContent = document.getElementById("scrollContent");
+
+    // Position descriptions with detailed explanations
+    const positionDescriptions = {
+      static: {
+        short: "Default positioning",
+        detail: "Elements flow naturally in the document. Top, left, right, bottom properties have no effect. This is how HTML elements behave by default - they stack one after another."
+      },
+      relative: {
+        short: "Moves from original spot",
+        detail: "Element stays in document flow but can be nudged from its original position using top, left, right, bottom. Other elements still respect its original space."
+      },
+      fixed: {
+        short: "Glued to your screen",
+        detail: "Element is positioned relative to the browser window and stays there even when you scroll. Perfect for navigation bars, floating buttons, or pop-ups that should always be visible."
+      },
+      absolute: {
+        short: "Breaks free from flow",
+        detail: "Element is removed from normal document flow and positioned relative to its closest positioned parent (or the document if none exists). Other elements act like it doesn't exist."
+      },
+      sticky: {
+        short: "Smart positioning",
+        detail: "Acts like relative positioning until you scroll to a certain point, then becomes fixed. Great for headers that stick to the top when scrolling past them."
+      }
+    };
+
+    // Helper functions for enhanced content
+    function getPositionEmoji(pos) {
+      const emojis = {
+        static: "📍",
+        relative: "↗️",
+        fixed: "📌",
+        absolute: "🎯",
+        sticky: "🧲"
+      };
+      return emojis[pos] || "📍";
+    }
+
+    function getPracticalTip(pos) {
+      const tips = {
+        static: "Most common position type - no setup needed!",
+        relative: "Perfect for small adjustments without breaking layout!",
+        fixed: "Great for navigation bars and floating action buttons!",
+        absolute: "Use for overlays, tooltips, and custom layouts!",
+        sticky: "Ideal for table headers and section titles!"
+      };
+      return tips[pos] || "";
+    }
+
+    // Reset function
+    function resetBoxes() {
+      // Clear all positioning
+      box1.style.position = '';
+      box1.style.top = '';
+      box1.style.left = '';
+      box1.style.right = '';
+      box1.style.bottom = '';
+      
+      box2.style.position = '';
+      box2.style.top = '';
+      box2.style.left = '';
+      box2.style.right = '';
+      box2.style.bottom = '';
+
+      // Remove active class from all buttons
+      buttons.forEach(btn => btn.classList.remove('active'));
+      
+      // Hide scroll content
+      scrollContent.classList.remove('show');
+    }
+
+    // Attach click listeners
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        const pos = btn.getAttribute("data-pos");
+        
+        // Reset everything first
+        resetBoxes();
+        
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        // Update info panel with enhanced content
+        const posInfo = positionDescriptions[pos];
+        currentPosEl.innerHTML = `${getPositionEmoji(pos)} ${pos}`;
+        positionSummaryEl.textContent = posInfo.short;
+        positionInfoEl.textContent = posInfo.detail;
+        practicalTipEl.textContent = getPracticalTip(pos);
+
+        // Apply the chosen position type
+        box1.style.position = pos;
+        box2.style.position = pos;
+
+        // Apply specific positioning based on type
+        switch(pos) {
+          case "static":
+            // Static is default - no offsets needed
+            break;
+            
+          case "relative":
+            box1.style.top = "50px";
+            box1.style.left = "30px";
+            box2.style.top = "20px";
+            box2.style.left = "100px";
+            break;
+            
+          case "fixed":
+            box1.style.top = "150px";
+            box1.style.left = "50px";
+            box2.style.bottom = "100px";
+            box2.style.right = "50px";
+            break;
+            
+          case "absolute":
+            box1.style.top = "200px";
+            box1.style.left = "100px";
+            box2.style.top = "250px";
+            box2.style.left = "250px";
+            break;
+            
+          case "sticky":
+            box1.style.top = "20px";
+            box1.style.left = "50px";
+            box2.style.top = "20px";
+            box2.style.right = "300px";
+            scrollContent.classList.add('show');
+            break;
+        }
+      });
+    });
+
+    // Initialize with static positioning
+    document.querySelector('[data-pos="static"]').click();
+  </script>
+</body>
+</html>
