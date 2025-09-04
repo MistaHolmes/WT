@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS-Final</title>
+</head>
+<body onload="">
+  <div id="a">
+    <button id="b" onclick="bodyload()">Click Me</button>
+    <img id="pic" alt="" src="">
+    <!-- Refresh Button -->
+    <button onclick="location.reload()">Refresh</button>
+  </div>
+
+  <button onclick="planets()">Click Me</button>
+  <button   onclick="payment()">Click Me</button>
+
+  <script type="text/javascript">
+    function bodyload() {
+      document.getElementById("pic").src = "./2145624.jpg";
+      document.getElementById("pic").style.width = "100px";
+      document.getElementById("pic").style.height = "100px";
+      console.log("body loaded");
+      console.warn("Body loaded too harshly");
+
+      document.write("Welcome to the Soul Society<br>");
+      document.write("This is a paragraph, explaining document.write. Let's get started!<br>");
+    }
+
+    function payment() {
+      document.write(`
+        <fieldset>
+          <legend>Payment</legend>
+          <label>Card Number</label>
+          <input type="text" name="cardnumber" placeholder="Card Number" />
+          <br>
+          <label>Expiry Date</label>
+          <input type="text" name="expirydate" placeholder="MM/YY" />
+          <br>
+          <label>CVV</label>
+          <input type="text" name="cvv" placeholder="CVV" />
+          <br>
+          <label>Name on Card</label>
+          <input type="text" name="nameoncard" placeholder="Name on Card" />
+          <br>
+          <button>Pay</button>
+        </fieldset>
+      `);
+    }
+
+    function planets() {
+      var planets = ["Mercury", "Venus", "Earth", "Mars", "Jupiter", "Saturn", "Uranus", "Neptune"];
+      for (var i = 0; i < planets.length; i++) {
+        document.write(planets[i] + "<br>");
+      }
+    }
+  </script>
+</body>
+</html>
