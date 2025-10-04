@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navbar</title>
+  <style>
+    body {
+      margin: 0;
+      background-color: white;
+      font-family: Arial, sans-serif;
+      color: black;
+    }
+
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #181717; /* dark greyish navbar */
+      padding: 10px 20px;
+      border-bottom: 2px solid #1a1919;
+    }
+
+    .nav-options {
+      list-style: none;
+      display: flex;
+      gap: 0;              /* no gaps so hover fills neatly */
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-options li {
+      padding: 12px 20px;  /* controls clickable area */
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .nav-options li:hover {
+      background-color: #bbb;  /* fills whole li box */
+      color: black;
+    }
+
+    .nav-buttons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-buttons button {
+      width: 90px;
+      height: 35px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      color: white;
+      font-weight: bold;
+      transition: opacity 0.3s;
+    }
+
+    .nav-buttons button:hover {
+      opacity: 0.8;
+    }
+
+    /* Specific button styles */
+    .sign-in {
+      background-color: green;
+    }
+
+    .register {
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <ul class="nav-options">
+      <li>Home</li>
+      <li>Services</li>
+      <li>About</li>
+      <li>Contact</li>
+      <li>Gallery</li>
+    </ul>
+    <div class="nav-buttons">
+      <button class="sign-in">Sign In</button>
+      <button class="register">Register</button>
+    </div>
+  </nav>
+
+</body>
+</html>

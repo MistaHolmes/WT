@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>JEE Mains Registration Form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <style>
+        body {
+            background-color: #f7f9fc;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+        }
+        .form-container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: white;
+            padding: 30px 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+        }
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #0d6efd;
+            font-weight: 600;
+        }
+        .form-label {
+            font-weight: 500;
+            color: #212529;
+        }
+        .form-select, .form-control {
+            border-radius: 6px;
+            padding: 10px 12px;
+            font-size: 1rem;
+        }
+        .btn-submit {
+            background-color: #0d6efd;
+            border: none;
+            padding: 12px;
+            font-size: 1.15rem;
+            border-radius: 8px;
+            width: 100%;
+        }
+        .btn-submit:hover {
+            background-color: #0b5ed7;
+        }
+        /* Responsive spacing */
+        @media (max-width: 576px) {
+            .form-container {
+                padding: 20px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="form-container">
+    <h2>JEE Mains Registration Form</h2>
+    <form>
+        <!-- Name -->
+        <div class="mb-3">
+            <label for="fullname" class="form-label">Full Name</label>
+            <input type="text" class="form-control" id="fullname" placeholder="Enter your full name" required />
+        </div>
+
+        <!-- Date of Birth -->
+        <div class="mb-3">
+            <label for="dob" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="dob" required />
+        </div>
+
+        <!-- Gender -->
+        <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+            <select id="gender" class="form-select" required>
+                <option value="" selected disabled>Select gender</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+                <option>Prefer not to say</option>
+            </select>
+        </div>
+
+        <!-- Aadhaar Number -->
+        <div class="mb-3">
+            <label for="aadhaar" class="form-label">Aadhaar Number</label>
+            <input type="text" class="form-control" id="aadhaar" placeholder="12-digit Aadhaar Number" 
+                   pattern="\d{12}" title="Enter a valid 12-digit Aadhaar number" required />
+        </div>
+
+        <!-- PAN Card Number -->
+        <div class="mb-3">
+            <label for="pan" class="form-label">PAN Card Number</label>
+            <input type="text" class="form-control" id="pan" placeholder="ABCDE1234F" 
+                   pattern="[A-Z]{5}[0-9]{4}[A-Z]{1}" 
+                   title="Enter a valid PAN card number (e.g. ABCDE1234F)" required />
+        </div>
+
+        <!-- Mobile Number -->
+        <div class="mb-3">
+            <label for="mobile" class="form-label">Mobile Number</label>
+            <input type="tel" class="form-control" id="mobile" placeholder="10-digit mobile number" 
+                   pattern="[6-9]\d{9}" title="Enter valid 10-digit Indian mobile number" required />
+        </div>
+
+        <!-- Email -->
+        <div class="mb-3">
+            <label for="email" class="form-label">Email Address</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter your email" required />
+        </div>
+
+        <!-- Address -->
+        <div class="mb-3">
+            <label for="address" class="form-label">Complete Address</label>
+            <textarea class="form-control" id="address" rows="3" placeholder="Enter your mailing address" required></textarea>
+        </div>
+
+        <!-- State -->
+        <div class="mb-3">
+            <label for="state" class="form-label">State / UT</label>
+            <input type="text" class="form-control" id="state" placeholder="Enter your State or Union Territory" required />
+        </div>
+
+        <!-- Category -->
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select id="category" class="form-select" required>
+                <option value="" selected disabled>Select category</option>
+                <option>General</option>
+                <option>OBC-NCL</option>
+                <option>SC</option>
+                <option>ST</option>
+                <option>EWS</option>
+                <option>PwD</option>
+            </select>
+        </div>
+
+        <!-- Paper Choice -->
+        <div class="mb-3">
+            <label for="jeePaper" class="form-label">Paper to Enroll</label>
+            <select id="jeePaper" class="form-select" required>
+                <option value="" selected disabled>Select Paper</option>
+                <option>Paper 1 - B.E./B.Tech</option>
+                <option>Paper 2 - B.Arch</option>
+                <option>Paper 3 - B.Planning</option>
+            </select>
+        </div>
+
+        <!-- Exam City Preferences -->
+        <div class="mb-3">
+            <label for="examCity" class="form-label">Preferred Exam City</label>
+            <input type="text" class="form-control" id="examCity" placeholder="Enter your preferred exam city" required />
+            <small class="form-text text-muted">You may enter up to 4 preferred cities separated by commas</small>
+        </div>
+
+        <!-- Upload Photograph -->
+        <div class="mb-3">
+            <label for="photo" class="form-label">Upload Photograph (JPEG/PNG, max 300kb)</label>
+            <input type="file" class="form-control" id="photo" accept="image/png, image/jpeg" required />
+        </div>
+
+        <!-- Upload Signature -->
+        <div class="mb-3">
+            <label for="signature" class="form-label">Upload Signature (JPEG/PNG, max 50kb)</label>
+            <input type="file" class="form-control" id="signature" accept="image/png, image/jpeg" required />
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary btn-lg mt-3">Submit Registration</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

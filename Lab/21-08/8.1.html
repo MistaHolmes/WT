@@ -1,0 +1,27 @@
+<!-- implementation of js in html all three forms -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>External JS Example</title>
+  <script src="external_JS.js"></script>
+</head>
+<body>
+  <button onclick="sayHi()">External Js</button>
+</body>
+</html>
+ 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Inline JS Example</title>
+  <script>
+    function greet() {
+      alert("Hello from Internal JavaScript!");
+    }
+  </script>
+</head>
+<body>
+  <button onclick="alert('Hello, Inline JS!')">Inline Js</button>
+  <button onclick="greet()">Internal Js</button>
+</body>
+</html>

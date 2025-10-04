@@ -4,14 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form</title>
+    <style>
+        .butt{
+            background-color: blueviolet;
+            color: white;   
+            border-radius: 5px;
+        }
+        div{
+            font-size: 20px;
+        }
+    </style>
 </head>
 <body>
     <form action="">
-        <span>Student Name</span>
-        <span>Student Redg No</span>
-        <span>Student Fees</span>
-        <span>Subjects</span>
-        <span>Branches</span>
+        <div>
+            <span>Student Name</span><br><input type="text" name="name" placeholder="Enter Name"><br>
+            <span>Student Redg No</span><br><input type="text" name="redg" placeholder="Enter Redg No"><br>
+            <span>Student Fees</span><br><input type="text" name="fees" placeholder="Enter Fees"><br>
+            <span>Subjects</span><br><input type="text" name="subjects" placeholder="Enter Subjects"><br>
+            <span>Branches</span><br>
+            <select name="branches" placeholder="Select a branch">
+                <option value="">Select your option</option>
+                <option value="cse">Computer Science Engineering</option>
+                <option value="it">Information Technology</option>
+                <option value="me">Mechanical Engineering</option>
+                <option value="mg">Management</option>
+                <option value="ee">Electrical Engineering</option>
+                </select>
+            <br>
+            <span>Mobile No</span><br><input type="text" name="mobile"><br>
+            <span>Time of Admission</span><br><input type="date" name="time"><br>
+        </div>
+        <button type="submit"  onclick="alert('Submitted')" class="butt">Submit</button>  
     </form>
 </body>
 </html>

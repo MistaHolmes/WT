@@ -1,0 +1,95 @@
+body {
+    background: #f9fafb;
+}
+.container {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+}
+.product-card {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    border-radius: 15px;
+    background: #fff;
+    margin: 20px 0;
+    transition: transform 0.15s;
+}
+.product-card:hover {
+    transform: translateY(-4px) scale(1.02);
+}
+.product-card img {
+    max-height: 180px;
+    object-fit: contain;
+    margin: 20px auto 0 auto;
+    display: block;
+}
+.product-footer {
+    border-top: 1px solid #f0f0f0;
+    margin-top: 15px;
+    padding-top: 15px;
+}
+.btn-primary {
+    width: 100%;
+}
+.product-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+.product-price {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #232323;
+}
+/* Amazon footer styles */
+#foot {
+    background-color: #232f3e;
+    color: #ddd;
+    font-size: 14px;
+}
+#foot a {
+    color: #ddd;
+    text-decoration: none;
+}
+#foot a:hover {
+    text-decoration: underline;
+}
+#foot ul {
+    list-style: none;
+}
+#foot ul li:first-child {
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+}
+#foot2 {
+    background-color: #131a22;
+    color: #ccc;
+    font-size: 12px;
+}
+#btop {
+    background-color: #37475a;
+    color: white;
+    height: 50px;
+    font-size: 14px;
+}
+#btop a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+#btop:hover {
+    background-color: #485769;
+}
+#foot .container {
+    padding-top: 0 !important;
+}
+.signin-btn {
+    background-color: #febd69; /* Amazon yellow */
+    border: 1px solid #f3a847;
+    color: #111;
+    font-weight: bold;
+    border-radius: 8px; /* rounded corners */
+    padding: 6px 20px;
+}
+.signin-btn:hover {
+    background-color: #f3a847;
+}
