@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart - Apple</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="/style.css">
+    <!-- Clerk -->
+    <script async crossorigin="anonymous"
+        data-clerk-publishable-key="pk_test_Y2FzdWFsLWFwaGlkLTEyLmNsZXJrLmFjY291bnRzLmRldiQ"
+        src="https://cdn.jsdelivr.net/npm/@clerk/clerk-js@latest/dist/clerk.browser.js"></script>
+    <script>
+        window.addEventListener("load", async function () {
+        await Clerk.load();
+        if (!Clerk.user) Clerk.openSignIn();
+        Clerk.mountUserButton(document.getElementById("clerk-user"));
+        });
+    </script>
+    <style>
+        @font-face {
+            font-family: Apple;
+            src: url("Fonts/sf-pro-display_regular.ttf");
+        }
+
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', Apple, sans-serif;
+        }
+
+        body {
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+        }
+        /* Cart Container */
+        .cart-container {
+            max-width: 1200px;
+            margin: 80px auto 60px;
+            padding: 40px 20px;
+        }
+
+        .cart-header {
+            margin-bottom: 30px;
+        }
+
+        .cart-header h1 {
+            font-size: 40px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .cart-content {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 30px;
+        }
+
+        /* Cart Items */
+        .cart-items {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 20px;
+            padding: 25px 0;
+            border-bottom: 1px solid #d2d2d7;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-image {
+            width: 150px;
+            height: 150px;
+            background: #f5f5f7;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .item-details {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .item-info h3 {
+            font-size: 21px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1d1d1f;
+        }
+
+        .item-info p {
+            font-size: 14px;
+            color: #6e6e73;
+            margin-bottom: 5px;
+        }
+
+        .item-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: #f5f5f7;
+            border-radius: 8px;
+            padding: 8px 15px;
+        }
+
+        .quantity-control button {
+            background: none;
+            border: none;
+            color: #0071e3;
+            font-size: 18px;
+            cursor: pointer;
+            padding: 5px;
+            display: flex;
+            align-items: center;
+        }
+
+        .quantity-control button:hover {
+            color: #0077ed;
+        }
+
+        .quantity-control span {
+            font-size: 16px;
+            font-weight: 500;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .item-price {
+            font-size: 21px;
+            font-weight: 600;
+            color: #1d1d1f;
+        }
+
+        .remove-item {
+            color: #0071e3;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .remove-item:hover {
+            text-decoration: underline;
+        }
+
+        /* Cart Summary */
+        .cart-summary {
+            background: white;
+            border-radius: 18px;
+            padding: 30px;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
+        }
+
+        .cart-summary h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 17px;
+        }
+
+        .summary-row.total {
+            padding-top: 20px;
+            border-top: 1px solid #d2d2d7;
+            margin-top: 20px;
+            font-size: 21px;
+            font-weight: 600;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background: #0071e3;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 17px;
+            font-weight: 500;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .checkout-btn:hover {
+            background: #0077ed;
+        }
+
+        .continue-shopping {
+            color: #0071e3;
+            text-decoration: none;
+            font-size: 17px;
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .continue-shopping:hover {
+            text-decoration: underline;
+        }
+
+        .delivery-info {
+            background: #f5f5f7;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+
+        .delivery-info p {
+            font-size: 14px;
+            color: #6e6e73;
+            line-height: 1.6;
+        }
+
+        .delivery-info i {
+            color: #0071e3;
+            margin-right: 8px;
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 80px 20px;
+            background: white;
+            border-radius: 18px;
+        }
+
+        .empty-cart i {
+            font-size: 80px;
+            color: #d2d2d7;
+            margin-bottom: 20px;
+        }
+
+        .empty-cart h2 {
+            font-size: 32px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .empty-cart p {
+            font-size: 17px;
+            color: #6e6e73;
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background: #f5f5f7;
+            padding: 40px 20px 20px;
+            color: #6e6e73;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #d2d2d7;
+        }
+
+        .footer-content p {
+            font-size: 12px;
+            color: #6e6e73;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cart-content {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-summary {
+                position: static;
+            }
+
+            .cart-item {
+                flex-direction: column;
+            }
+
+            .item-image {
+                width: 100%;
+                height: 200px;
+            }
+
+            .cart-header h1 {
+                font-size: 32px;
+            }
+
+            .nav-items {
+                justify-content: space-between;
+            }
+
+            .nav-items a:not(:first-child):not(:last-child) {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-items">
+            <i class="ri-apple-fill"></i>
+            <a href="../index.html">Store</a>
+            <a href="./macbook.html">Mac</a>
+            <a href="./ipad.html">iPad</a>
+            <a href="./iphone15pro.html">iPhone</a>
+            <a href="./Apple_watch.html">Watch</a>
+            <a href="./Airpods.html">AirPods</a>
+            <a href="./Cart.html" class="ri-shopping-bag-line" ></a>
+            <div id="clerk-user"></div>
+        </div>
+    </nav>
+
+    <!-- Cart Container -->
+    <div class="cart-container">
+        <div class="cart-header">
+            <h1>Your Bag</h1>
+        </div>
+
+        <div class="cart-content" id="cartContent">
+            <!-- Cart Items -->
+            <div class="cart-items">
+                <div class="cart-item">
+                    <div class="item-image">
+                        <img src="../Assests/iphon15resp.jpg" alt="iPhone 15 Pro">
+                    </div>
+                    <div class="item-details">
+                        <div class="item-info">
+                            <h3>iPhone 15 Pro</h3>
+                            <p>Natural Titanium</p>
+                            <p>256GB</p>
+                            <a href="#" class="remove-item" onclick="removeItem(event, 0)">Remove</a>
+                        </div>
+                        <div class="item-actions">
+                            <div class="quantity-control">
+                                <button onclick="updateQuantity(0, -1)"><i class="ri-subtract-line"></i></button>
+                                <span id="qty-0">1</span>
+                                <button onclick="updateQuantity(0, 1)"><i class="ri-add-line"></i></button>
+                            </div>
+                            <div class="item-price" id="price-0">$999</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart-item">
+                    <div class="item-image">
+                        <div style="font-size: 80px; color: #d2d2d7;">⌚</div>
+                    </div>
+                    <div class="item-details">
+                        <div class="item-info">
+                            <h3>Apple Watch Series 9</h3>
+                            <p>Midnight Aluminum Case</p>
+                            <p>Sport Band</p>
+                            <a href="#" class="remove-item" onclick="removeItem(event, 1)">Remove</a>
+                        </div>
+                        <div class="item-actions">
+                            <div class="quantity-control">
+                                <button onclick="updateQuantity(1, -1)"><i class="ri-subtract-line"></i></button>
+                                <span id="qty-1">1</span>
+                                <button onclick="updateQuantity(1, 1)"><i class="ri-add-line"></i></button>
+                            </div>
+                            <div class="item-price" id="price-1">$399</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="cart-item">
+                    <div class="item-image">
+                        <div style="font-size: 80px; color: #d2d2d7;">🎧</div>
+                    </div>
+                    <div class="item-details">
+                        <div class="item-info">
+                            <h3>AirPods Pro (2nd generation)</h3>
+                            <p>With MagSafe Charging Case</p>
+                            <a href="#" class="remove-item" onclick="removeItem(event, 2)">Remove</a>
+                        </div>
+                        <div class="item-actions">
+                            <div class="quantity-control">
+                                <button onclick="updateQuantity(2, -1)"><i class="ri-subtract-line"></i></button>
+                                <span id="qty-2">1</span>
+                                <button onclick="updateQuantity(2, 1)"><i class="ri-add-line"></i></button>
+                            </div>
+                            <div class="item-price" id="price-2">$249</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cart Summary -->
+            <div class="cart-summary">
+                <h2>Summary</h2>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span id="subtotal">$1,647</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span>Free</span>
+                </div>
+                <div class="summary-row">
+                    <span>Estimated Tax</span>
+                    <span id="tax">$131.76</span>
+                </div>
+                <div class="summary-row total">
+                    <span>Total</span>
+                    <span id="total">$1,778.76</span>
+                </div>
+                <button class="checkout-btn" onclick="checkout()">Check Out</button>
+                <a href="#" class="continue-shopping">Continue Shopping</a>
+                
+                <div class="delivery-info">
+                    <p><i class="ri-truck-line"></i> Free delivery on orders over $50</p>
+                    <p style="margin-top: 10px;"><i class="ri-arrow-go-back-line"></i> Free and easy returns</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p>Copyright © 2024 Apple Inc. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Cart data stored in memory
+        let cartItems = [
+            { name: 'iPhone 15 Pro', price: 999, quantity: 1 },
+            { name: 'Apple Watch Series 9', price: 399, quantity: 1 },
+            { name: 'AirPods Pro', price: 249, quantity: 1 }
+        ];
+
+        function updateQuantity(index, change) {
+            if (cartItems[index]) {
+                cartItems[index].quantity += change;
+                if (cartItems[index].quantity < 1) {
+                    cartItems[index].quantity = 1;
+                }
+                document.getElementById(`qty-${index}`).textContent = cartItems[index].quantity;
+                updatePrices();
+            }
+        }
+
+        function removeItem(event, index) {
+            event.preventDefault();
+            if (confirm('Remove this item from your bag?')) {
+                cartItems.splice(index, 1);
+                checkEmptyCart();
+            }
+        }
+
+        function updatePrices() {
+            let subtotal = 0;
+            cartItems.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                const priceElement = document.getElementById(`price-${index}`);
+                if (priceElement) {
+                    priceElement.textContent = `$${itemTotal}`;
+                }
+                subtotal += itemTotal;
+            });
+
+            const tax = subtotal * 0.08;
+            const total = subtotal + tax;
+
+            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
+            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
+        }
+
+        function checkEmptyCart() {
+            if (cartItems.length === 0) {
+                document.getElementById('cartContent').innerHTML = `
+                    <div class="empty-cart" style="grid-column: 1 / -1;">
+                        <i class="ri-shopping-bag-line"></i>
+                        <h2>Your bag is empty</h2>
+                        <p>Add some amazing Apple products to get started.</p>
+                        <button class="checkout-btn" style="max-width: 300px; margin: 0 auto;" onclick="window.location.href='#'">Start Shopping</button>
+                    </div>
+                `;
+            }
+        }
+
+        function checkout() {
+            alert('Proceeding to checkout...');
+        }
+
+        // Initialize prices
+        updatePrices();
+    </script>
+</body>
+</html>
