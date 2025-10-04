@@ -605,9 +605,16 @@ function getProductIcon(productName) {
 }
 
 function checkout() {
-    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
-    alert('Proceeding to checkout...\n\nTotal items: ' + totalItems);
-    // Add your checkout logic here
+    if (cartItems.length === 0) {
+        alert("Your cart is empty!");
+        return;
+    }
+
+    // Clear the cart
+    cartItems = [];
+    
+    // Redirect to confirmation page
+    window.location.href = "checkout.html";
 }
 
 // Initialize cart on page load
