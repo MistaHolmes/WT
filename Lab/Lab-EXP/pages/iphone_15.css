@@ -1,0 +1,408 @@
+@font-face {
+    font-family: Apple;
+    src: url("Fonts/sf-pro-display_regular.ttf");
+}
+
+*{
+    padding: 0;
+    margin: 0;
+    font-family: Apple, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+}
+
+body {
+    background: #fff;
+    color: #1d1d1f;
+}
+
+/* Navigation */
+nav {
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: saturate(180%) blur(20px);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    padding: 0;
+    height: auto;
+}
+
+.nav-items {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 20px;
+    gap: 30px;
+}
+
+.nav-items a {
+    color: #f5f5f7;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.3s;
+    padding: 0;
+}
+
+.nav-items a:hover {
+    color: #fff;
+}
+
+.nav-items i {
+    color: #f5f5f7;
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0;
+}
+
+.nav-items i:hover {
+    color: #fff;
+}
+
+/* History Section (Main Content Area) */
+.history-section {
+    padding: 80px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #f5f5f7;
+    min-height: 70vh;
+}
+
+.history-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.history-header h1 {
+    font-size: 56px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #1d1d1f;
+}
+
+.history-header p {
+    font-size: 21px;
+    color: #6e6e73;
+}
+
+/* Timeline (Product Sections) */
+.history-timeline {
+    position: relative;
+    padding: 40px 0;
+}
+
+.timeline-item {
+    display: flex;
+    gap: 40px;
+    margin-bottom: 60px;
+    align-items: flex-start;
+}
+
+.timeline-year {
+    font-size: 48px;
+    font-weight: 700;
+    color: #0071e3;
+    min-width: 150px;
+}
+
+.timeline-content {
+    flex: 1;
+}
+
+.timeline-content h3 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #1d1d1f;
+}
+
+.timeline-content p {
+    font-size: 17px;
+    line-height: 1.6;
+    color: #6e6e73;
+}
+
+/* Values Section */
+.history-values {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.history-values h2 {
+    font-size: 48px;
+    font-weight: 600;
+    margin-bottom: 40px;
+    color: #1d1d1f;
+}
+
+.values-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.value-card {
+    background: white;
+    padding: 40px 30px;
+    border-radius: 18px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.value-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+}
+
+.value-card i {
+    font-size: 48px;
+    color: #0071e3;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.value-card h3 {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #1d1d1f;
+}
+
+.value-card p {
+    font-size: 17px;
+    line-height: 1.5;
+    color: #6e6e73;
+}
+
+/* Footer Styles */
+footer {
+    background: #f5f5f7;
+    padding: 40px 20px 20px;
+    height: auto;
+    color: #6e6e73;
+}
+
+.footer1 {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-bottom: 30px;
+    border-bottom: 1px solid #d2d2d7;
+    display: block;
+    padding: 0 0 30px 0;
+}
+
+.footer1 div {
+    margin-bottom: 15px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #6e6e73;
+}
+
+.footer1 a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.footer1 a:hover {
+    text-decoration: underline;
+}
+
+.footer2 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 30px 0;
+    border-bottom: 1px solid #d2d2d7;
+}
+
+.footer2 h4 {
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    margin-top: 20px;
+    color: #1d1d1f;
+}
+
+.footer2 h4:first-child {
+    margin-top: 0;
+}
+
+.footer2 a {
+    display: block;
+    color: #6e6e73;
+    text-decoration: none;
+    font-size: 12px;
+    margin-bottom: 8px;
+    transition: color 0.3s;
+}
+
+.footer2 a:hover {
+    color: #1d1d1f;
+}
+
+.sub-footer1,
+.sub-footer2,
+.sub-footer3,
+.sub-footer4,
+.sub-footer5 {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer3 {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 12px;
+    color: #6e6e73;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-top: none;
+}
+
+.footer3 .panel1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer3 .panel2 {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.footer3 .panel2 li {
+    list-style: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.footer3 .panel2 li:hover {
+    text-decoration: underline;
+}
+
+.footer3 .panel3 {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.footer3 .panel3 a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.footer3 .panel3 a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .timeline-item {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .timeline-year {
+        font-size: 36px;
+        min-width: auto;
+    }
+    
+    .history-header h1 {
+        font-size: 40px;
+    }
+    
+    .history-header p {
+        font-size: 18px;
+    }
+    
+    .history-values h2 {
+        font-size: 36px;
+    }
+    
+    .values-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer2 {
+        grid-template-columns: 1fr;
+    }
+
+    .footer3 {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .footer3 .panel2 {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .nav-items {
+        font-size: 11px;
+        gap: 15px;
+        padding: 10px 15px;
+    }
+
+    .nav-items a {
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 500px) {
+    .history-header h1 {
+        font-size: 32px;
+    }
+
+    .history-header p {
+        font-size: 16px;
+    }
+
+    .timeline-year {
+        font-size: 28px;
+    }
+
+    .timeline-content h3 {
+        font-size: 22px;
+    }
+
+    .timeline-content p {
+        font-size: 15px;
+    }
+
+    .history-values h2 {
+        font-size: 28px;
+    }
+
+    .value-card {
+        padding: 30px 20px;
+    }
+
+    .value-card h3 {
+        font-size: 20px;
+    }
+
+    .value-card p {
+        font-size: 15px;
+    }
+
+    .nav-items {
+        justify-content: space-between;
+        gap: 10px;
+    }
+
+    .nav-items a {
+        display: none;
+    }
+
+    .nav-items i {
+        color: white;
+        font-size: 18px;
+    }
+}
