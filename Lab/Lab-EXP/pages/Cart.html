@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shopping Cart - Apple</title>
     <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
-    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/page.css">
     <!-- Clerk -->
     <script async crossorigin="anonymous"
         data-clerk-publishable-key="pk_test_Y2FzdWFsLWFwaGlkLTEyLmNsZXJrLmFjY291bnRzLmRldiQ"
@@ -334,7 +334,7 @@
         <div class="nav-items">
             <i class="ri-apple-fill"></i>
             <a href="../index.html">Store</a>
-            <a href="./macbook.html">Mac</a>
+            <a href="./macbook.html">Macbook</a>
             <a href="./ipad.html">iPad</a>
             <a href="./iphone15pro.html">iPhone</a>
             <a href="./Apple_watch.html">Watch</a>
@@ -456,71 +456,164 @@
         </div>
     </footer>
 
-    <script>
-        // Cart data stored in memory
-        let cartItems = [
-            { name: 'iPhone 15 Pro', price: 999, quantity: 1 },
-            { name: 'Apple Watch Series 9', price: 399, quantity: 1 },
-            { name: 'AirPods Pro', price: 249, quantity: 1 }
-        ];
+<script>
+// Load cart from sessionStorage
+function getCart() {
+    const cartData = sessionStorage.getItem('appleCart');
+    return cartData ? JSON.parse(cartData) : [];
+}
 
-        function updateQuantity(index, change) {
-            if (cartItems[index]) {
-                cartItems[index].quantity += change;
-                if (cartItems[index].quantity < 1) {
-                    cartItems[index].quantity = 1;
-                }
-                document.getElementById(`qty-${index}`).textContent = cartItems[index].quantity;
-                updatePrices();
-            }
+function saveCart(cart) {
+    sessionStorage.setItem('appleCart', JSON.stringify(cart));
+}
+
+// Initialize cart with stored items
+let cartItems = getCart();
+
+function updateQuantity(index, change) {
+    if (cartItems[index]) {
+        cartItems[index].quantity += change;
+        if (cartItems[index].quantity < 1) {
+            cartItems[index].quantity = 1;
         }
+        saveCart(cartItems);
+        renderCart();
+    }
+}
 
-        function removeItem(event, index) {
-            event.preventDefault();
-            if (confirm('Remove this item from your bag?')) {
-                cartItems.splice(index, 1);
-                checkEmptyCart();
-            }
-        }
+function removeItem(event, index) {
+    event.preventDefault();
+    if (confirm('Remove this item from your bag?')) {
+        cartItems.splice(index, 1);
+        saveCart(cartItems);
+        renderCart();
+    }
+}
 
-        function updatePrices() {
-            let subtotal = 0;
-            cartItems.forEach((item, index) => {
-                const itemTotal = item.price * item.quantity;
-                const priceElement = document.getElementById(`price-${index}`);
-                if (priceElement) {
-                    priceElement.textContent = `$${itemTotal}`;
-                }
-                subtotal += itemTotal;
-            });
+function updatePrices() {
+    let subtotal = 0;
+    cartItems.forEach((item) => {
+        subtotal += item.price * item.quantity;
+    });
 
-            const tax = subtotal * 0.08;
-            const total = subtotal + tax;
+    const tax = subtotal * 0.08;
+    const total = subtotal + tax;
 
-            document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
-            document.getElementById('tax').textContent = `$${tax.toFixed(2)}`;
-            document.getElementById('total').textContent = `$${total.toFixed(2)}`;
-        }
+    const subtotalEl = document.getElementById('subtotal');
+    const taxEl = document.getElementById('tax');
+    const totalEl = document.getElementById('total');
+    
+    if (subtotalEl) subtotalEl.textContent = `$${subtotal.toFixed(2)}`;
+    if (taxEl) taxEl.textContent = `$${tax.toFixed(2)}`;
+    if (totalEl) totalEl.textContent = `$${total.toFixed(2)}`;
+}
 
-        function checkEmptyCart() {
-            if (cartItems.length === 0) {
-                document.getElementById('cartContent').innerHTML = `
-                    <div class="empty-cart" style="grid-column: 1 / -1;">
-                        <i class="ri-shopping-bag-line"></i>
-                        <h2>Your bag is empty</h2>
-                        <p>Add some amazing Apple products to get started.</p>
-                        <button class="checkout-btn" style="max-width: 300px; margin: 0 auto;" onclick="window.location.href='#'">Start Shopping</button>
+function renderCart() {
+    const cartContent = document.getElementById('cartContent');
+    
+    if (!cartContent) return;
+    
+    if (cartItems.length === 0) {
+        cartContent.innerHTML = `
+            <div class="empty-cart" style="grid-column: 1 / -1;">
+                <i class="ri-shopping-bag-line"></i>
+                <h2>Your bag is empty</h2>
+                <p>Add some amazing Apple products to get started.</p>
+                <button class="checkout-btn" style="max-width: 300px; margin: 0 auto;" onclick="window.location.href='../index.html'">Start Shopping</button>
+            </div>
+        `;
+        return;
+    }
+    
+    // Build cart items HTML
+    let itemsHTML = '<div class="cart-items">';
+    
+    cartItems.forEach((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        const variantParts = item.variant ? item.variant.split(',') : [];
+        
+        itemsHTML += `
+            <div class="cart-item">
+                <div class="item-image">
+                    ${item.image ? 
+                        `<img src="${item.image}" alt="${item.name}">` : 
+                        `<div style="font-size: 80px; color: #d2d2d7;">${getProductIcon(item.name)}</div>`
+                    }
+                </div>
+                <div class="item-details">
+                    <div class="item-info">
+                        <h3>${item.name}</h3>
+                        ${variantParts.map(part => `<p>${part.trim()}</p>`).join('')}
+                        <a href="#" class="remove-item" onclick="removeItem(event, ${index})">Remove</a>
                     </div>
-                `;
-            }
-        }
+                    <div class="item-actions">
+                        <div class="quantity-control">
+                            <button onclick="updateQuantity(${index}, -1)"><i class="ri-subtract-line"></i></button>
+                            <span id="qty-${index}">${item.quantity}</span>
+                            <button onclick="updateQuantity(${index}, 1)"><i class="ri-add-line"></i></button>
+                        </div>
+                        <div class="item-price" id="price-${index}">$${itemTotal}</div>
+                    </div>
+                </div>
+            </div>
+        `;
+    });
+    
+    itemsHTML += '</div>';
+    
+    // Add summary
+    itemsHTML += `
+        <div class="cart-summary">
+            <h2>Summary</h2>
+            <div class="summary-row">
+                <span>Subtotal</span>
+                <span id="subtotal">$0.00</span>
+            </div>
+            <div class="summary-row">
+                <span>Shipping</span>
+                <span>Free</span>
+            </div>
+            <div class="summary-row">
+                <span>Estimated Tax</span>
+                <span id="tax">$0.00</span>
+            </div>
+            <div class="summary-row total">
+                <span>Total</span>
+                <span id="total">$0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="checkout()">Check Out</button>
+            <a href="../index.html" class="continue-shopping">Continue Shopping</a>
+            
+            <div class="delivery-info">
+                <p><i class="ri-truck-line"></i> Free delivery on orders over $50</p>
+                <p style="margin-top: 10px;"><i class="ri-arrow-go-back-line"></i> Free and easy returns</p>
+            </div>
+        </div>
+    `;
+    
+    cartContent.innerHTML = itemsHTML;
+    updatePrices();
+}
 
-        function checkout() {
-            alert('Proceeding to checkout...');
-        }
+function getProductIcon(productName) {
+    if (productName.includes('Watch')) return '⌚';
+    if (productName.includes('AirPods')) return '🎧';
+    if (productName.includes('iPhone')) return '📱';
+    if (productName.includes('iPad')) return '📱';
+    if (productName.includes('Mac')) return '💻';
+    return '📦';
+}
 
-        // Initialize prices
-        updatePrices();
-    </script>
+function checkout() {
+    const totalItems = cartItems.reduce((sum, item) => sum + item.quantity, 0);
+    alert('Proceeding to checkout...\n\nTotal items: ' + totalItems);
+    // Add your checkout logic here
+}
+
+// Initialize cart on page load
+document.addEventListener('DOMContentLoaded', function() {
+    renderCart();
+});
+</script>
 </body>
 </html>

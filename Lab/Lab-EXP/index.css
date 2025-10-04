@@ -1,0 +1,317 @@
+@font-face {
+    font-family: Apple;
+    src: url("Fonts/sf-pro-display_regular.ttf");
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    font-family: Apple;
+}
+
+#main {
+    position: relative;
+    overflow: hidden;
+    height: 579vh;
+}
+
+#page1, #page2 {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgb(255, 255, 255);
+}
+
+/* =========================
+   NAVBAR
+========================= */
+nav {
+    height: 40px;
+    background-color: rgb(21, 20, 20);
+    width: 100vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: white;
+    position: fixed;
+    z-index: 99;
+    padding-left: 14px;
+}
+
+.nav-items a {
+    text-decoration: none;
+    padding: 8px;
+    color: rgba(255, 255, 255, 0.241);
+}
+
+.nav-items a:hover,
+.nav-items i:hover {
+    color: white;
+}
+
+.nav-items i {
+    padding: 8px;
+    color: rgba(255, 255, 255, 0.241);
+    cursor: pointer;
+}
+
+/* =========================
+   NAV2
+========================= */
+.nav2 {
+    color: white;
+    background-color: #1d1d1f;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    padding-top: 45px;
+}
+
+.nav2 a {
+    color: #2997ff;
+    text-decoration: none;
+}
+
+/* =========================
+   HERO SECTIONS
+========================= */
+.hero-section {
+    height: 80vh;
+    width: 100vw;
+    color: rgb(255, 255, 255);
+    background-position: center;
+    background-size: cover;
+    overflow: hidden;
+    position: relative;
+}
+
+.hero-section-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-section-p {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: absolute;
+    top: 11%;
+    gap: 10px;
+}
+
+.hero-section-p h2 {
+    font-size: 4vw;
+}
+
+.hero-section-p h3 {
+    font-size: 2vw;
+}
+
+.links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 21px;
+}
+
+.links a {
+    color: #2997ff;
+    text-decoration: none;
+}
+
+.links a:hover {
+    text-decoration: underline;
+}
+
+/* Hero section backgrounds */
+.hero-section2 {
+    background-image: url("Assests/iphone15white.jpg");
+}
+
+.hero-section3 {
+    background-image: url("Assests/applewatchblack.jpg");
+}
+
+/* =========================
+   GRID SECTIONS
+========================= */
+.hero-section4 {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.section4-1, .section4-2,
+.section5-1, .section5-2,
+.section6-1, .section6-2 {
+    width: 50%;
+    margin: 3px;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.section4-1 { background-image: url("Assests/applewatchseries.jpg"); }
+.section4-2 { background-image: url("Assests/card1.jpg"); }
+.section5-1 { background-image: url("Assests/mac1.jpg"); }
+.section5-2 { background-image: url("Assests/ipad1.jpg"); }
+.section6-1 { background-image: url("Assests/card4.jpg"); }
+.section6-2 { background-image: url("Assests/card5.jpg"); }
+
+/* =========================
+   SLIDER
+========================= */
+.slider {
+    margin: 3px;
+    background-color: #ffffff;
+    height: 80vh;
+    width: 100%;
+}
+
+.swiper {
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #b42929;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.swiper-slide img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer {
+    background-color: #e8e8ed;
+    color: #9d9da4;
+    padding: 30px 20px;
+}
+
+.footer1, .footer2, .footer3 {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer1 div {
+    margin-bottom: 15px;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.footer1 a {
+    color: #6b6b71;
+    text-decoration: none;
+}
+
+.footer1 a:hover {
+    text-decoration: underline;
+}
+
+.footer2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+.footer2 h4 {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1d1d1f;
+}
+
+.footer2 a {
+    display: block;
+    color: #9d9da4;
+    text-decoration: none;
+    font-size: 12px;
+    margin-bottom: 8px;
+}
+
+.footer2 a:hover {
+    color: #1d1d1f;
+}
+
+.footer3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 12px;
+    color: #9d9da4;
+    margin-top: 20px;
+}
+
+/* =========================
+   MOBILE / TABLET RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+    .hero-section-p h2 { font-size: 6vw; }
+    .hero-section-p h3 { font-size: 3vw; }
+    .links { font-size: 18px; gap: 15px; }
+    .section4-1, .section4-2,
+    .section5-1, .section5-2,
+    .section6-1, .section6-2 { width: 100%; margin: 5px 0; }
+}
+
+@media (max-width: 768px) {
+    nav { flex-direction: column; height: auto; padding: 10px; }
+    .nav-items a, .nav-items i { padding: 5px; font-size: 14px; }
+    .hero-section { height: 60vh; }
+    .hero-section-p h2 { font-size: 7vw; }
+    .hero-section-p h3 { font-size: 4vw; }
+    .links { flex-direction: column; gap: 10px; font-size: 16px; }
+    .slider { height: 50vh; }
+    .footer2 { flex-direction: column; gap: 1rem; }
+    .footer3 { flex-direction: column; align-items: flex-start; }
+}
+
+@media (max-width: 480px) {
+    .hero-section { height: 50vh; }
+    .hero-section-p h2 { font-size: 8vw; }
+    .hero-section-p h3 { font-size: 5vw; }
+    .links { font-size: 14px; }
+    nav { padding: 5px; }
+    .slider { height: 40vh; }
+}
+
+/* =========================
+   CLERK USER BUTTON
+========================= */
+#clerk-user { position: relative; z-index: 100; }
+.cl-modalBackdrop, .cl-userButtonPopoverCard {
+    position: fixed !important;
+    z-index: 9999 !important;
+}
+
+.cl-userButtonPopoverCard {
+    top: 50px !important;
+    right: 20px !important;
+    left: auto !important;
+    transform: none !important;
+}
+
+@media (max-width: 768px) {
+    .cl-userButtonPopoverCard {
+        top: 60px !important;
+        right: 10px !important;
+        left: 10px !important;
+        max-width: calc(100vw - 20px) !important;
+    }
+}

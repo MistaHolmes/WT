@@ -7,7 +7,6 @@
     padding: 0;
     margin: 0;
     font-family:Apple;
-    /* background-color: black; */
 }
 
 #main{
@@ -21,7 +20,6 @@
     height: 100vh;
     width: 100vw;
     background-color: rgb(255, 255, 255);
-    /* background-color: white; */
 }
 
 #page2{
@@ -44,11 +42,6 @@ nav{
     z-index: 99;
     padding-left: 14px;
 }
-
-/* .nav-logo img{
-    height: 44px;
-    width: 44px;
-} */
 
 .nav-items a{
     text-decoration: none;
@@ -100,25 +93,17 @@ nav{
     display: none;
 }
 
-/* subnav-menu */
-
-
-
-/* end */
 /* hero-section img */
 .hero-section{
     height: 80vh;
     width: 100vw;
     color: rgb(255, 255, 255);
-    /* display: flex;
-    justify-content: center;
-    flex-direction: column; */
-    /* background-color:black; */
     background-image: url("Assests/iphone15black.jpg");
     background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
     overflow: hidden;
     position: relative;
-
 }
 
 .hero{
@@ -129,12 +114,9 @@ nav{
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
+    height: 100%;
 }
-
-/* .hero-section-img img{
-    height: 365px;
-    width: 1520px;
-} */
 
 .hero-section-p{
     display: flex;
@@ -145,6 +127,10 @@ nav{
     position: absolute;
     top: 11%;
     gap: 10px;
+    text-align: center;
+    width: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
 .hero-section-p h2{
@@ -158,10 +144,14 @@ nav{
 .hero-section2{
     margin: 5px;
     background-image: url("Assests/iphone15white.jpg");
+    background-size: cover;
+    background-position: center;
 }
 .hero-section3{
     padding-top: 3px;
     background-image: url("Assests/applewatchblack.jpg");
+    background-size: cover;
+    background-position: center;
 }
 
 .text1{
@@ -194,39 +184,94 @@ nav{
     text-decoration: underline;
 }
 
+/* SIDE-BY-SIDE SECTIONS - DESKTOP */
 .hero-section4{
     width: 100%;
     display: flex;
-    /* padding-top: 3px; */
-   
+    flex-direction: row; /* Ensure side-by-side on desktop */
 }
 
 .section4-1{
     width: 50%;
     background-image: url("Assests/applewatchseries.jpg");
-    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     margin: 3px;
+    height: 80vh;
 }
 
 .section4-2{
     background-image: url("Assests/card1.jpg");
     width: 50%;
+    background-size: cover;
+    background-position: center;
     margin: 3px;
-}
-.text3{
-    color: black;
+    height: 80vh;
 }
 
 .section5-1{
     width: 50%;
     background-image: url("Assests/mac1.jpg");
-    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     margin: 3px;
+    height: 80vh;
 }
 
 .section5-2{
     width: 50%;
     background-image: url("Assests/ipad1.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+}
+
+.section6-1{
+    width: 50%;
+    background-image: url("Assests/card4.jpg");
+    background-size: cover;
+    background-position: center;
+    margin: 3px;
+    height: 80vh;
+}
+
+.section6-2{
+    width: 50%;
+    background-image: url("Assests/card5.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 80vh;
+}
+
+/* Text color overrides */
+.section5-1 .hero-section-p,
+.section5-2 .hero-section-p {
+    color: #000;
+}
+
+.section5-1 .hero-section-p a,
+.section5-2 .hero-section-p a {
+    color: #0071e3;
+}
+
+.section4-2 .hero-section-p {
+    color: #000;
+}
+
+.section4-2 .hero-section-p a {
+    color: #0071e3;
+}
+
+.hero-section2 .hero-section-p {
+    color: #000;
+}
+
+.hero-section2 .hero-section-p a {
+    color: #0071e3;
+}
+
+.text3{
+    color: black;
 }
 
 .text4{
@@ -236,21 +281,6 @@ nav{
 .text4 p{
     font-size: 20px;
     line-height: 3px;
-}
-
-.section6-1{
-    width: 50%;
-    background-image: url("Assests/card4.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    margin: 3px;
-}
-
-.section6-2{
-    width: 50%;
-    background-image: url("Assests/card5.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 
 .text5{
@@ -328,20 +358,10 @@ nav{
     background-size: cover;
 }
 
-
-
-
-
-/* End */
-
-
 /* footer */
 footer{
-    /* align-items: center; */
     height: 967px;
-    /* width: 100vw; */
     background-color: #e8e8ed;
-    /* opacity: 0.36; */
     color: #9d9da4;
 }
 
@@ -351,7 +371,6 @@ footer{
     flex-direction: column;
     padding: 30px;
     margin: 0px 250px 0px 220px;
-    
 }
 
 .footer1 a{
@@ -380,8 +399,6 @@ footer{
 
 .footer3{
     border-top: 1px solid rgba(0, 0, 0, 0.222);
-    /* display: flex; */
-    /* justify-content: center; */
     padding-left: 30px;
     align-items: center;
     gap: 30px;
@@ -474,7 +491,6 @@ footer{
     flex-direction: column;
 }
 
-
 /* footer end */
 
 .ri-menu-line{
@@ -482,9 +498,7 @@ footer{
 }
 
 /* subnav */
-
 .nav3{
-    /* background-color: #2997ff; */
     height: 100vh;
     position: absolute;
     top: -100%;
@@ -509,14 +523,11 @@ footer{
 
 .nav-top-store{
     display: flex;
-    /* flex-direction: column; */
     padding: 2vw 20vw;
     gap: 3vw;
-
 }
 
 .nav-top-store a{
-    
     text-decoration: none;
     color: white;
     cursor: pointer;
@@ -550,10 +561,12 @@ footer{
     flex-direction: column;
 }
 
-@media (max-width:500px) {
+/* MOBILE RESPONSIVENESS */
+@media (max-width:768px) {
     #main{
         height: 773vh;
     }
+    
     nav{
         position: relative;
         justify-content: space-between;
@@ -571,9 +584,11 @@ footer{
     .ri-menu-line{
         display: initial;
     }
+    
     .nav-items a{
         display: none;
     }
+    
     .nav2{
         display: none;
     }
@@ -590,17 +605,16 @@ footer{
         z-index: 99;
         background-color: rgb(21, 20, 20);
         transition: all cubic-bezier(0.19, 1, 0.22, 1) 1s;
-        /* position: fixed; */
     }
     
     .subnav i{
         position: absolute;
         top: 1%;
-        /* left: 70%; */
         right: 22%;
         font-size: 4vh;
         color: white;
     }
+    
     .subnav a{
         text-decoration: none;
         color: white;
@@ -608,18 +622,19 @@ footer{
         font-weight: 600;
     }
 
-    .hero-section2{
-        background-image: url("Assests/iphone15white.jpg");
-        background-repeat: no-repeat;
-        background-size: cover;
+    /* HERO SECTIONS MOBILE */
+    .hero-section{
+        height: 60vh;
     }
-
-    .text1 h2{
+    
+    .hero-section-p h2{
         font-size: 9vh;
     }
-    .text1 h3{
+    
+    .hero-section-p h3{
         font-size: 2vh;
     }
+    
     .links{
         font-size: 3vh;
     }
@@ -627,31 +642,34 @@ footer{
     .hero{
         background-image: url("Assests/iphon15resp.jpg");
     }
-    .hero-p h2{
-        font-size: 5vh;
+    
+    .hero-section2{
+        background-image: url("Assests/iphone15white.jpg");
+        background-size: cover;
     }
-    .hero-p h3{
-        font-size: 2vh;
-        font-weight: 400;
-    }
+    
     .hero-section3{
-        background-repeat: no-repeat;
         background-size: cover;
         width: 100%;
     }
 
-    .text0 h3{
-        font-size: 3vh;
-    }
-
+    /* SIDE-BY-SIDE SECTIONS STACK ON MOBILE */
     .hero-section4{
-        justify-content: center;
-        align-items: center;
-        background-size: contain;
         flex-direction: column;
-        /* height: 100%; */
         height: 150vh;
     }
+    
+    .section4-1,
+    .section4-2,
+    .section5-1,
+    .section5-2,
+    .section6-1,
+    .section6-2{
+        width: 100%;
+        height: 60vh;
+        margin: 2px 0;
+    }
+    
     .section5-1{
         background-image: url("Assests/card2.jpg");
     }
@@ -667,6 +685,7 @@ footer{
     .text3 h3{
         font-size: 3vh;
     }
+    
     .text4 h3{
         font-size: 5vh;
     }
@@ -674,9 +693,12 @@ footer{
     .text6 h3{
         font-size: 6vh;
     }
+    
     .text5 .links a{
         font-size: 2.5vh;
     }
+
+    /* SLIDER MOBILE */
    .s1{
     background-image: url("Assests/resp1.jpg");
    }
@@ -693,13 +715,15 @@ footer{
     background-image: url("Assests/resp5.jpg");
    }
 
+   /* FOOTER MOBILE */
    footer{
-    width: 414px;
-    height: 1450px;
+    width: 100%;
+    height: auto;
    }
+   
    .footer1{
     margin: 0;
-    
+    padding: 20px;
    }
 
    .footer3{
@@ -707,7 +731,7 @@ footer{
     align-items: end;
     margin: 0;
     font-size: 17px;
-    padding-right: 147px;
+    padding-right: 20px;
    }
 
    .panel1{
@@ -715,23 +739,19 @@ footer{
     justify-content: end;
     align-items: center;
     font-size: 10px;
-    position: relative;
-    right: -19%;
    }
    
    .panel2{
     flex-direction: column;
     justify-content: center;
-    position: relative;
-    padding-left: 117px;
-    right: 54%;
-    padding-bottom: 55px;
+    padding-left: 0;
+    padding-bottom: 20px;
     }
+   
    .panel3{
     display: flex;
-    /* justify-content: center; */
     align-items: center;
-    width: 55vw;
+    width: 100%;
     font-size: 14px;
    }
 
@@ -745,61 +765,102 @@ footer{
 
    .footer2{
     position: relative;
-    right: 53%;
-    bottom: 4%;
+    display: block;
+    margin: 20px;
+   }
+
+   .sub-footer1,
+   .sub-footer2,
+   .sub-footer3,
+   .sub-footer4,
+   .sub-footer5{
+    width: 100%;
+    line-height: 22px;
+    padding-bottom: 28px;
+    position: static;
+   }
+
+   .footer2 a{
     display: block;
    }
-
-   .sub-footer1{
-    width: 140px;
-    line-height: 22px;
-    padding-bottom: 28px;
-   }
-
-   .sub-footer2{
-    width: 140px;
-    line-height: 22px;
-    padding-bottom: 28px;
-   }
-
-   .sub-footer3{
-    width: 140px;
-    line-height: 22px;
-    padding-bottom: 28px;
-   }
-
-   .sub-footer4{
-    width: 140px;
-    line-height: 22px;
-    padding-bottom: 28px;
-   }
-
-   .sub-footer5{
-    width: 140px;
-    position: absolute;
-    line-height: 22px;
-    padding-bottom: 28px;
-    top: 78%;
-   }
-   .footer2 a{
-    display: none;
-   }
-
 }
 
+/* Clerk Modal Positioning */
+#clerk-user {
+    position: relative;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+}
 
-/* HISTORY.HTML SPECIFIC STYLES - START */
+body .cl-modalBackdrop {
+    position: fixed !important;
+    z-index: 9998 !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+}
 
-/* Reset and Base Styles */
-/* Note: * { margin: 0; padding: 0; box-sizing: border-box; } is already in style.css but with a different font-family, which is why I'm including it here and slightly modifying the body font to match the original history file's design intention. */
+body .cl-userButtonPopoverCard,
+body .cl-card,
+body [role="dialog"] {
+    position: fixed !important;
+    top: 50px !important;
+    right: 20px !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    z-index: 9999 !important;
+    margin: 0 !important;
+}
+
+body .cl-userButtonPopoverRootBox {
+    position: fixed !important;
+    top: 50px !important;
+    right: 20px !important;
+    z-index: 9999 !important;
+}
+
+body .cl-internal-b3fm6y {
+    position: fixed !important;
+    top: 50px !important;
+    right: 20px !important;
+    left: auto !important;
+    z-index: 9999 !important;
+}
+
+/* Override any inline styles */
+body [class*="cl-"] {
+    position: relative !important;
+}
+
+body .cl-modalBackdrop,
+body .cl-userButtonPopoverCard,
+body .cl-card,
+body [role="dialog"],
+body .cl-userButtonPopoverRootBox {
+    position: fixed !important;
+}
+
+@media (max-width: 768px) {
+    body .cl-userButtonPopoverCard,
+    body .cl-card,
+    body [role="dialog"] {
+        top: 60px !important;
+        right: 10px !important;
+        left: 10px !important;
+        max-width: calc(100vw - 20px) !important;
+    }
+}
+
+/* HISTORY.HTML SPECIFIC STYLES */
 body {
     background: #fff;
     color: #1d1d1f;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 }
 
-/* Navigation Overrides for History Page */
-/* The original style.css has a fixed top navigation, but this history page has different colors/sizing which must be preserved for this page's design. The history.html nav is more typical of a secondary Apple nav. */
 nav {
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: saturate(180%) blur(20px);
@@ -807,7 +868,7 @@ nav {
     top: 0;
     z-index: 1000;
     padding: 0;
-    height: auto; /* Resetting height from 40px in style.css */
+    height: auto;
 }
 
 .nav-items {
@@ -825,7 +886,7 @@ nav {
     text-decoration: none;
     font-size: 12px;
     transition: color 0.3s;
-    padding: 0; /* Resetting padding from style.css */
+    padding: 0;
 }
 
 .nav-items a:hover {
@@ -836,11 +897,9 @@ nav {
     color: #f5f5f7;
     font-size: 16px;
     cursor: pointer;
-    padding: 0; /* Resetting padding from style.css */
+    padding: 0;
 }
 
-
-/* History Section Styles */
 .history-section {
     padding: 80px 20px;
     max-width: 1200px;
@@ -954,13 +1013,12 @@ nav {
     color: #6e6e73;
 }
 
-/* Footer Styles (History Page Version) */
-/* Overriding the one in style.css to use the full Apple-style footer from history.html */
+/* History Page Footer */
 footer {
     background: #f5f5f7;
     padding: 40px 20px 20px;
-    height: auto; /* Resetting height from 967px in style.css */
-    color: #6e6e73; /* Setting base footer text color */
+    height: auto;
+    color: #6e6e73;
 }
 
 .footer1 {
@@ -968,8 +1026,8 @@ footer {
     margin: 0 auto;
     padding-bottom: 30px;
     border-bottom: 1px solid #d2d2d7;
-    display: block; /* Resetting display flex from style.css */
-    padding: 0 0 30px 0; /* Adjusting padding */
+    display: block;
+    padding: 0 0 30px 0;
 }
 
 .footer1 div {
@@ -1034,7 +1092,7 @@ footer {
     color: #6e6e73;
     flex-wrap: wrap;
     gap: 20px;
-    border-top: none; /* Removing the extra border */
+    border-top: none;
 }
 
 .footer3 .panel2,
@@ -1084,60 +1142,5 @@ footer {
     .footer3 {
         flex-direction: column;
         align-items: flex-start;
-    }
-}
-
-/* HISTORY.HTML SPECIFIC STYLES - END */
-
-
-/* Add this CSS to your style.css file or in a <style> tag in your HTML */
-
-/* Clerk User Button Container Positioning */
-#clerk-user {
-    position: relative;
-    z-index: 100;
-}
-
-/* Clerk Modal Portal Positioning */
-.cl-modalBackdrop,
-.cl-userButtonPopoverCard {
-    position: fixed !important;
-    z-index: 9999 !important;
-}
-
-/* Position the Clerk popover card near the navbar */
-.cl-userButtonPopoverCard {
-    top: 50px !important; /* Adjust this value based on your navbar height */
-    right: 20px !important;
-    left: auto !important;
-    transform: none !important;
-}
-
-/* Ensure the Clerk user button trigger stays in place */
-.cl-userButtonTrigger {
-    position: relative;
-    z-index: 100;
-}
-
-/* Alternative: If you want the modal to appear directly below the user button */
-.cl-userButtonPopoverRootBox {
-    position: fixed !important;
-    top: 50px !important;
-    right: 20px !important;
-    z-index: 9999 !important;
-}
-
-/* Clerk overlay backdrop */
-.cl-modalBackdrop {
-    background: rgba(0, 0, 0, 0.5) !important;
-}
-
-/* For mobile responsiveness */
-@media (max-width: 768px) {
-    .cl-userButtonPopoverCard {
-        top: 60px !important;
-        right: 10px !important;
-        left: 10px !important;
-        max-width: calc(100vw - 20px) !important;
     }
 }

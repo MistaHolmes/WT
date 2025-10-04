@@ -9,7 +9,7 @@
   <link href="https://cdn.jsdelivr.net/npm/remixicon@4.1.0/fonts/remixicon.css" rel="stylesheet"/>
   <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
 
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/page.css" />
         <!-- Clerk -->
     <script async crossorigin="anonymous"
         data-clerk-publishable-key="pk_test_Y2FzdWFsLWFwaGlkLTEyLmNsZXJrLmFjY291bnRzLmRldiQ"
@@ -100,7 +100,7 @@
     <div class="nav-items">
       <i class="ri-apple-fill"></i>
       <a href="../index.html">Store</a>
-      <a href="./macbook.html">Mac</a>
+      <a href="./macbook.html">Macbook</a>
       <a href="./ipad.html">iPad</a>
       <a href="./iphone15pro.html">iPhone</a>
       <a href="./Apple_watch.html">Watch</a>
@@ -301,3 +301,45 @@
       </div>
     </div>
   </footer>
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+    function getCart() {
+        const cartData = sessionStorage.getItem('appleCart');
+        return cartData ? JSON.parse(cartData) : [];
+    }
+    function saveCart(cart) {
+        sessionStorage.setItem('appleCart', JSON.stringify(cart));
+    }
+    function addToCart(product) {
+        let cart = getCart();
+        const existingIndex = cart.findIndex(
+            item => item.name === product.name && item.variant === product.variant
+        );
+        if (existingIndex > -1) {
+            cart[existingIndex].quantity += product.quantity;
+        } else {
+            cart.push(product);
+        }
+        saveCart(cart);
+    }
+
+    const buyBtn = document.getElementById("buy");
+    if (buyBtn) {
+        buyBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            const product = {
+                name: "iPad Air",
+                variant: "Blue, 128GB",
+                price: 599,
+                quantity: 1,
+                image: "../Assests/ipad.jpg"
+            };
+            addToCart(product);
+            window.location.href = "./Cart.html";
+        });
+    }
+});
+</script>
+<script src="../scripts/ipad.js"></script>
+  </body>
+  </html>
