@@ -224,7 +224,7 @@ function checkout(){
     if(cartItems.length === 0){ alert("Your cart is empty!"); return; }
     cartItems = [];
     saveCart(cartItems);
-    window.location.href = "checkout.html";
+    window.location.href = "./checkout.html";
 }
 
 document.addEventListener('DOMContentLoaded', renderCart);
